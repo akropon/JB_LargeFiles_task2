@@ -3,7 +3,7 @@ package largefiles_test2;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
-class TVShow implements Program, Comparable<Program>{
+public class TVShow implements Program, Comparable<Program>{
 
     private final int channel;
     private final LocalDateTime startTime;

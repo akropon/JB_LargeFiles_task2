@@ -3,6 +3,12 @@ package largefiles_test2;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
+/**
+ * Действие - описывает, когда и на какую программу надо переключиться.
+ * Если программа ссылается на нулевое значение, то действие подразумевает
+ * выключение средства просмотра телепередач
+ * @author akropon
+ */
 public class Action {
     final LocalDateTime time;
     final Program program;
@@ -13,7 +19,7 @@ public class Action {
     }
 
     public int getChanel() {
-        return program.getChannel();
+        return program==null ? -1 : program.getChannel();
     }
 
     public LocalDateTime getTime() {
@@ -27,8 +33,8 @@ public class Action {
     @Override
     public String toString() {
         if (program!=null) {
-            return String.format("Turn on ch=%d in t=%d to watch pr=%s", 
-                program.getChannel(), time.toEpochSecond(ZoneOffset.UTC), program.toString());
+            return String.format("Turn on ch=%d in t=%d", 
+                program.getChannel(), time.toEpochSecond(ZoneOffset.UTC));
         } else {
             return String.format("Turn OFF in time=%d", 
                 time.toEpochSecond(ZoneOffset.UTC));
